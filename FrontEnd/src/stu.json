@@ -1,0 +1,26 @@
+[
+    {
+    "empid":1,
+    "name":"Sahil",
+    "desig": "Software Engineer",
+    "salary":12000
+    },
+    {
+        "empid":2,
+        "name":"Gurleen Singh",
+        "desig": "Developer",
+        "salary":20000
+        },
+        {
+            "empid":3,
+            "name":"Eknoor",
+            "desig": "Software Engineer",
+            "salary":10000
+            },
+            {
+                "empid":4,
+                "name":"Surinder Singh",
+                "desig": "Web Designer",
+                "salary":15000
+                }
+]
