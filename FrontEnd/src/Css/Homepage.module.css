@@ -1,0 +1,26 @@
+
+
+.image
+{
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 'center';
+    height: 85vh;
+    width: 100%;   
+} 
+.dd
+{
+    color: rgb(106, 106, 108);
+}
+.logo
+{
+    max-width: 90px;
+    max-height: 90px;
+   margin-top: 8px;
+    
+    transform: translateY(-15%);
+    padding:0px
+    
+}
+

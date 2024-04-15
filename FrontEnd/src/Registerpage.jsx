@@ -36,13 +36,13 @@ export default function Registerpage() {
 <Form.Control
   type="password"
   placeholder="Re-Enter Password"
-/><Link to="/"><u>Already have account</u> </Link>
+/><Link to="/Login"><u>Already have account</u> </Link>
 </Form.Group> <center>
 <Button
 variant="light"
 style={{alignContent:"center", textAlign:"center"}}
 >
-Submit
+Register
 </Button></center>
 </Form>
               </Card.Body>

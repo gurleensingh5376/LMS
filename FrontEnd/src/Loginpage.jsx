@@ -50,7 +50,7 @@ export default function Loginpage() {
                       }, 2000);
                     }}
                   >
-                    Submit
+                   Login
                   </Button></center>
                 </Form>
               </Card.Body>
