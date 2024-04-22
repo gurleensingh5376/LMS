@@ -3,26 +3,19 @@ import style from "./Css/Form.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ShimmerEffect from "./ShimmerEffect";
-import loginbg from "./assets/1072.jpg"
 
-const backgroundImageStyle = {
-  backgroundImage: `url(${loginbg})`,
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "cover",
-  backgroundPosition: "center"
-};
 export default function Loginpage() {
   const navigate = useNavigate();
   const [buttonClicked, setButtonClicked] = useState(true);
 
 
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100"style={backgroundImageStyle} >
+    <div className="bg-grey d-flex justify-content-center align-items-center vh-100" >
       {buttonClicked ? (
-        <div className={`bg-grey p-3 rounded w-25${style.cardd}`}>
-            <Card  style={{backgroundColor:"#e7e5e4", color:""}}className={style.card}>
+        <div className={` p-3${style.cardd}`}>
+            <Card  className={style.card}>
               <Card.Body >
-              <h1 className={style.h}>Login</h1>
+              <h1 className={style.h}>Sign In</h1>
                 <Form>
                   <Form.Group className="mb-3" controlId="formGroupEmail">
                     <Form.Label>Email address</Form.Label>
@@ -39,11 +32,12 @@ export default function Loginpage() {
                       className="remember-forgot"
                               /><Link to="/Register" style={{ textAlign:"right"}}><u> Dont have account register</u></Link>
                   </Form.Group><center>
-                  <Button
-                    variant="light"
-                    style={{alignContent:"center", textAlign:"center"}}
-
-                    onClick={() => {
+                  <button
+                  
+                  type="button"
+                  className="text-gray-900 bg-gradient-to-r from-sky-400 via-sky-400 to-sky-900 hover:bg-gradient-to-bl  focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 font-medium"
+              
+                         onClick={() => {
                       setButtonClicked(false);
                       setTimeout(() => {
                         navigate("/Dash");
@@ -51,7 +45,7 @@ export default function Loginpage() {
                     }}
                   >
                    Login
-                  </Button></center>
+                  </button></center>
                 </Form>
               </Card.Body>
             </Card>

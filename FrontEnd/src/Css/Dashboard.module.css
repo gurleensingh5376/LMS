@@ -5,19 +5,28 @@
 justify-content: center;
 align-items: center;
 }
-.carddash{
-  width: 14rem;
+.Bigcard{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   
-  margin-left: 30px;
-margin-top: 15px;
   }
   .image1
 {
   max-width: 250px;
-  max-height: 150px;
+  max-height: 100px;
   margin-bottom: 20px;
 
 }
+.image2
+{
+  max-width: 300px;
+  max-height: 200px;
+  margin-bottom: 20px;
+
+}
+
+
   .background{
     height: 150vh;
    

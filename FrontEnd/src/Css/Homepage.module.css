@@ -15,12 +15,12 @@
 }
 .logo
 {
-    max-width: 90px;
-    max-height: 90px;
+    max-width: 100px;
+    max-height: 25px;
    margin-top: 8px;
-    
+   margin-left: 43px;
     transform: translateY(-15%);
     padding:0px
-    
-}
+  } 
+
 
