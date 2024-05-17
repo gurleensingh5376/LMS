@@ -1,15 +1,14 @@
 
 import { Row, Col, Container } from 'react-bootstrap'
-import style from '../Css/coursedetail.module.css'
 import image from '../assets/pyton.png'
 
 export default function CourseDetails() {
     return (
         <>
-        <div className='card' style={{marginTop:"20px", maxWidth:"155vh" , marginLeft:"28px", marginBottom:"20px"}}>
+        <div className='card "mt-5 max-w-screen-xl ml-7 mb-5"' >
             
             <div className='card-body'>
-                <Container className={style.container}>
+                <Container className="bg-white mb-5 max-w-90 min-h-680">
                     <Row>
                         <Col>
 

@@ -65,24 +65,24 @@ const Navbar = ({ sidebarToggle, setsidebarToggle, clicked, detail, assignment, 
                                 <ul className='py-2 text-sm text-gray-950'>
                                     <li className='mb-2 rounded hover:shadow hover:bg-gray-200 py-1 px-2' style={{ margin: "10px" }}>
                                         <span onClick={() => {
-                                            navigate("");
+                                            navigate("feedback/");
 
                                         }}>
                                             <Row>
                                                 
                                                 <Col xs={4} style={{ marginTop: "3.5px", paddingleft: "30px" }}><CgProfile /></Col>
-                                                <Col xs={8} style={{ padding: "0", paddingRight: "75px" }}>Profile</Col>
+                                                <Col xs={8} style={{ padding: "0", paddingRight: "75px" }}>Feedback</Col>
                                             </Row>
                                         </span>
                                     </li>
                                     <li className='mb-2 rounded hover:shadow hover:bg-gray-200 py-1 px-2' style={{ margin: "10px" }}>
                                         <span onClick={() => {
-                                            navigate("");
+                                            navigate("/Contactus");
 
                                         }}>
                                             <Row>
                                                 <Col xs={4} style={{ marginTop: "3.5px", paddingleft: "30px" }}><FiSettings /></Col>
-                                                <Col xs={8} style={{ padding: "0", paddingRight: "75px" }}>Setting</Col>
+                                                <Col xs={8} style={{ padding: "0", paddingRight: "75px" }}>ContactUs</Col>
                                             </Row>
                                         </span>
                                     </li>

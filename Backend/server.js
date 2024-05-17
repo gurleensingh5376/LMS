@@ -1,55 +1,87 @@
-const express = require ('express')
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser')
-const app= express()
-const port= 3003
-mongoose.connect('mongodb://localhost:27017/Lms')
-  .then((data) => 
-  {
-    console.log('Connected!')
+const express = require('express')
+const mongoose = require('mongoose')
+const bodyParser = require('body-parser');
+const app = express()
+const bcrypt = require("bcryptjs");
+const saltRounds = 10;
+ 
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
 });
 
-// to set default view engine to hbs
-app.set('view engine','hbs')
 
-//bodyParser is used to convert the html code render on frontend
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
-
-//here we are making and defining the datatypes
-const name = new mongoose.Schema({
-  name:string
-})
-
-const auth =new mongoose.Schema({
-  id:string,
-  pass:string
-})
-
-const sendname = mongoose.model('detail',name)
-const signup = mongoose.model('auth',auth)
-
-app.get('/', (req, res)=>{
-     res.render("dashboards")
-})
-
-
-app.post("/data",(req,res)=>{
-const{email,password}= req.body;
-console.log("email  is received=" + email);
-console.log("password is received="+password);
-
-bcrypt.hash(password,10,function(err, hash){
-  const signupdetails = signup ({"id":email, "pass":hash});
-  signupdetails.save().then((data)=>{
-    res.render('dashboards')
+mongoose.connect("mongodb://localhost:27017/test").then(() => console.log("Connected!"));
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
   })
+);
+
+app.use(bodyParser.json()); 
+
+const data = new mongoose.Schema({
+  email: String,
+  password: String,
 });
 
-})
-app.listen(port, ()=>{
-    console.log(`Example app listening on port ${port}`)
+const auth = mongoose.model("auths", data);
 
-    let data=new sendname({'name':'gurleen'})
-    data.save().then((res)=>console.log(res))
+app.post('/api/auths',(req,res)=>{
+  console.log(req.body);
+  const password = req.body.password;
+  const email = req.body.email;
+
+  auth.findOne({email}).then((val)=>{
+  
+   if(val==null)
+   {
+     console.log("No data found")
+     
+     bcrypt.hash(password,saltRounds,function(err,hash){
+       console.log(hash)
+       let sendauth = new auth({email:email,password:hash});
+     sendauth.save().then((val)=>{
+       console.log(val)
+       res.json(val)
+     })
+   });
+     
+   }
+   else{
+     console.log("user already exist")
+   }
+ })
 })
+
+app.post('/login',(req,res)=>{
+  const email = req.body.email;
+  console.log(email);
+  auth.findOne({email : email}).then((val) =>{
+
+     if( val != null) {
+     console.log(val);
+     
+     bcrypt.compare(req.body.password,val.password , function(err , result){
+      console.log(result);
+      res.json(result);
+     })
+  }else{
+      res.json("Enter Correct Email")
+      // console.log(val)
+  }
+  })
+})
+
+app.get('/dash',(req,res)=>{
+  res.json()
+})
+
+app.listen(4000, () => {
+  console.log("listening port 4000");
+});

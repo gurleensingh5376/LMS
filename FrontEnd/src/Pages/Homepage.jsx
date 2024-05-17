@@ -1,31 +1,33 @@
 import logo from '../assets/logo copy.svg'
 import { useNavigate } from 'react-router-dom'
-import style from'../Css/Homepage.module.css'
 import sideimg from '../assets/sideimg.svg'
+
+
 export default function HomePage() {
     const Navigate = useNavigate();
+    
    
   return (
-    <div className="flex flex-col h-screen bg-slate-100">
+    <div className="flex flex-col h-screen ">
         <nav className=' px-4 py-4 flex justify-between '>
         
         <div className="flex items-center">
-  <img className={` ${style.logo}`} src={logo} alt='logo'/>
-  <span className='font-bold text-3xl ml-2 bg-gradient-to-r from-black via-grey to-sky-400 inline-block text-transparent bg-clip-text'>
+  <img className="max-w-[100px] h-[25px] mt-1 ml-43 -translate-y-15" src={logo} alt='logo'/>
+  <span className='font-bold text-3xl ml-2 bg-black inline-block text-transparent bg-clip-text'>
     Study 
   </span>
-  <span className='font-bold text-3xl ml-2'>
+  <span  className='font-bold text-3xl ml-2 bg-black inline-block text-transparent bg-clip-text'>
     Buddy
   </span>
 </div>
 
 
-        <div className='flex items-center gap-x-5'>
+        <div className='flex items-center mt-2 mx-2 gap-x-5'>
           <div className='relative'>
           <button
         onClick={()=>
         {
-            Navigate('/Registeration')
+            Navigate('/registration')
         }}
       type="button"
       className="text-white bg-black shadow-lg shadow-black-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2  "
@@ -78,10 +80,12 @@ export default function HomePage() {
       className="text-white bg-black shadow-lg shadow-black-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2  "
       >Get Started
     </button>
+    
     </div>
 
 
         </div>
+      
         <div className='justify-self-end'>
           <img src={sideimg} className='h-full ' />
         </div>

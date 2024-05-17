@@ -3,82 +3,110 @@ import { Row, Col } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import StarRatings from 'react-star-ratings';
 import logo from '../assets/logo.svg';
-import img from '../assets/course.svg';
-import imgs from '../assets/smallcard.svg';
+import js from '../assets/coursej.svg';
+import html from '../assets/html.jpg';
+import css from '../assets/css.svg';
+import web from '../assets/j.svg';
+import ll from '../assets/login.svg';
+import aa from '../assets/aa.svg';
+import imglg from '../assets/lc.svg';
+import imgcp from '../assets/cc.svg';
 import style from '../Css/Dashboard.module.css';
-import { CgProfile } from 'react-icons/cg';
-import { FiLogOut, FiSettings } from 'react-icons/fi';
+import { VscFeedback } from "react-icons/vsc";
+import { FiLogOut } from 'react-icons/fi';
+import { MdPhoneCallback } from "react-icons/md";
 import { FaUserCircle } from 'react-icons/fa';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 
     const ActiveCourses = [
-      {
+        {
+            title: "JavaScript Essentials",
+            subtitle: "Building Interactivity and Dynamic Content",
+            img:js
+          },
+          {
+            title: "Advanced JavaScript Techniques",
+            subtitle: "Harnessing the Power of ES6 and Beyond",
+            img:web
+          },
+          {
+            title: "Frontend Development Bootcamp",
+            subtitle: "Mastering HTML, CSS, and JavaScript",
+            img:html
+          },
+          {
+            title: "CSS Grid Layout Mastery",
+            subtitle: "Unlocking the Potential of Grid-based Designs",
+            img:css
+          },
+          {
         title: "Basics of Web Development",
         subtitle: "Basics Introduction to HTML & CSS",
+        img:ll
       },
       {
         title: "Mastering HTML5 Markup",
         subtitle: "Advanced Techniques for Modern Web Development",
+        img:html
       },
       {
         title: "CSS Styling Essentials",
         subtitle: "Fundamental Principles and Best Practices",
+        img:css
       },
       {
         title: "Responsive Web Designing",
         subtitle: "Optimizing Layouts for All Devices with CSS3",
+        img:js
       },
-      {
-        title: "JavaScript Essentials",
-        subtitle: "Building Interactivity and Dynamic Content",
-      },
-      {
-        title: "Advanced JavaScript Techniques",
-        subtitle: "Harnessing the Power of ES6 and Beyond",
-      },
-      {
-        title: "Frontend Development Bootcamp",
-        subtitle: "Mastering HTML, CSS, and JavaScript",
-      },
-      {
-        title: "CSS Grid Layout Mastery",
-        subtitle: "Unlocking the Potential of Grid-based Designs",
-      },
+     
       {
         title: "Modern JavaScript Frameworks",
         subtitle:
           "Exploring React, Angular, and Vue for Dynamic Web Applications",
+          img:aa
       },
       {
         title: "Semantic HTML5 Structure",
         subtitle: "Creating Meaningful Markup for Enhanced Accessibility and SEO",
+        img:web
       },
       {
         title: "Advanced CSS Animations",
         subtitle:
           "Crafting Engaging Visual Experiences with CSS3 Transitions and Keyframes",
+          img:html
       },
       {
         title: "Data Structures and Algorithms",
         subtitle: "Optimizing Code Efficiency for Scalable Applications",
+        img:ll
       },
       {
         title: "Web Performance Optimization",
         subtitle:
           "Improving Speed and Efficiency Through HTML, CSS, and JavaScript Techniques",
+          img:js
       },
       {
         title: "CSS Flexbox Fundamentals",
         subtitle: "Building Flexible and Responsive Layouts with Flexbox",
+        img:web
       },
       {
         title: "JavaScript Design Patterns",
         subtitle:
           "Architecting Maintainable and Scalable Codebases for Web Projects",
+          img:css
       },
       {
           title: "Basics of Html, Css, Javascript",
           subtitle:
             "Basics Introduction to HTML, CSS, Javascript ",
+            img:html
         },
     ];
 
@@ -112,13 +140,13 @@ export default function Dashboard() {
     const navigate = useNavigate();
 
     return (
-        <div className={style.background}>
+        <div >
             {/* Navigation bar */}
-            <nav className="bg-gradient-to-bl from-sky-700 via-sky-900 to-sky-400 px-4 py-3 flex justify-between">
+            <nav className="bg-sky-700 px-4 py-3 flex justify-between shadow-lg">
                 <div className="flex items-center text-xl">
                     <span className="text-black font-semibold">
-                        <img src={logo} style={{ height: '15px', width: '15px' }} alt="logo" />
-                        Study Buddy
+                        <img src={logo} className='h-8' alt="logo" />
+                    
                     </span>
                 </div>
                 {/* Navigation options */}
@@ -140,23 +168,23 @@ export default function Dashboard() {
                                 <FaUserCircle className="w-6 h-6 mt-1" />
                                 <div className="z-10 hidden absolute bg-white rounded-lg shadow w-32 group-focus:block top-full right-0">
                                     <ul className="py-2 text-sm text-gray-950">
-                                        <li className="mb-2 rounded hover:shadow hover:bg-gray-200 py-1 px-2" style={{ margin: '10px' }}>
-                                            <span onClick={() => navigate('/profile')}>
+                                        <li className="m-2 rounded hover:shadow hover:bg-gray-200 py-1 ">
+                                            <span onClick={() => navigate('/feedback')}>
                                                 <Row>
-                                                    <Col xs={4} style={{ marginTop: '3.5px' }}><CgProfile /></Col>
-                                                    <Col xs={8}>Profile</Col>
+                                                    <Col xs={4} style={{ marginTop: '3.5px' }}><VscFeedback/></Col>
+                                                    <Col xs={8}>feedback</Col>
                                                 </Row>
                                             </span>
                                         </li>
-                                        <li className="mb-2 rounded hover:shadow hover:bg-gray-200 py-1 px-2" style={{ margin: '10px' }}>
-                                            <span onClick={() => navigate('/settings')}>
+                                        <li className="m-2 rounded hover:shadow hover:bg-gray-200 py-1" >
+                                            <span onClick={() => navigate('/ContactUs')}>
                                                 <Row>
-                                                    <Col xs={4} style={{ marginTop: '3.5px' }}><FiSettings /></Col>
-                                                    <Col xs={8}>Settings</Col>
+                                                    <Col xs={4} style={{ marginTop: '3.5px' }}><MdPhoneCallback /></Col>
+                                                    <Col xs={8}>ContactUs</Col>
                                                 </Row>
                                             </span>
                                         </li>
-                                        <li className="mb-2 rounded hover:shadow hover:bg-gray-200 py-1 px-2" style={{ margin: '10px' }}>
+                                        <li className="m-2 rounded hover:shadow hover:bg-gray-200 py-1 " >
                                             <span onClick={() => navigate('/login')}>
                                                 <Row>
                                                     <Col xs={4} style={{ marginTop: '3.5px' }}><FiLogOut /></Col>
@@ -173,66 +201,67 @@ export default function Dashboard() {
             </nav>
 
             {/* Explore Our Courses section */}
-            <div className="mt-4 ml-4">
-                <h3 className="font-serif text-2xl mb-4">Explore Our Courses</h3>
+            <div className="mt-2 ml-4"data-aos="zoom-in-up">
+                <center className="center font-serif text-4xl text-dark text-bold mt-4">Explore Our Courses</center>
+                <h3 className="font-serif text-3xl mb-2">Free Courses</h3>
                 <hr />
-                <Row>
+                <Row className='mt-2'>
                     <Col xs={4} className="mr-4">
-                        <div className={`card ${style.card}`}>
-                            <div className="card-body p-0">
+                        <Link className={`card shadow-lg ${style.card}`}>
+                            <div className="card-body  p-0">
                                 <Row>
                                     <Col xs={7}>
                                         <img
-                                            className={`card-img-top m-0 ${style.image1}`}
-                                            src={imgs}
+                                            className="w-80 p-3 max-h-30 flex justify-center items-center"
+                                            src={imglg}
                                             alt="Course category"
                                         />
                                     </Col>
-                                    <Col xs={5}>
-                                        <h5 className="card-title text-center mt-3 text-lg font-serif">Language Courses</h5>
+                                    <Col xs={5} className='center mt-4'>
+                                        <h5 className="text-lg mt-4  font-serif">Language Courses</h5>
                                     </Col>
                                 </Row>
                             </div>
-                        </div>
+                        </Link>
                     </Col>
                     <Col xs={4}>
-                        <div className={`card ${style.card}`}>
+                        <Link className={`card shadow-lg ${style.card}`}>
                             <div className="card-body p-0">
                                 <Row>
                                     <Col xs={7}>
                                         <img
-                                            className={`card-img-top m-0 ${style.image1}`}
-                                            src={imgs}
+                                            className="w-80 p-3 max-h-30 flex justify-center items-center"
+                                            src={imgcp}
                                             alt="Course category"
                                         />
                                     </Col>
-                                    <Col xs={5}>
-                                        <h5 className="card-title text-center mt-3 text-lg font-serif">Computer Courses</h5>
+                                    <Col xs={5}className=' center mt-4'>
+                                        <h5 className=" mt-4 text-lg font-serif">Computer Basics</h5>
                                     </Col>
                                 </Row>
                             </div>
-                        </div>
+                        </Link>
                     </Col>
                 </Row>
             </div>
 
             {/* Active Courses section */}
-            <div className="mt-4 ml-4">
-                <h3 className="font-serif text-2xl mb-4">Active Courses</h3>
+            <div className="mt-4 ml-4"data-aos="zoom-in-down">
+                <h3 className="font-serif text-3xl mb-2">Paid Courses</h3>
                 <hr />
-                <Row className="px-4 mb-4 ">
+                <Row className="px-4 mb-4  ">
                     {filteredCourses.map((course, index) => (
                         <Col key={index} className="mb-4">
-                            <div className={`card ${style.Bigcard}`} style={{ height: '23rem', width: '20rem', marginTop: '18px' }}>
+                            <div className="card mt-2 h-96 w-80 flex flex-col justify-between shadow-lg">
                                 <div className="card-body">
-                                    <img className={`card-img-top ${style.image2}`} src={img} alt="Course image" />
-                                    <h5 className="card-title text-center mt-3 text-lg font-serif">
+                                    <img className={`card-img-top ${style.image2}`} src={course.img} alt="Course image" />
+                                  <div className='h-20'>  <h5 className="card-title text-center mt-3 text-lg font-serif">
                                         {course.title}
                                     </h5>
                                     <p className="card-subtitle text-center text-sm font-serif">
                                         {course.subtitle}
-                                    </p>
-                                    <Row className="mt-3 px-4">
+                                    </p></div>
+                                    <Row className="mt-3 px-4 ">
                                         <Col xs={8}>
                                             {/* Star Ratings */}
                                             <StarRatings
@@ -249,9 +278,9 @@ export default function Dashboard() {
                                         <Col xs={4}>
                                             <Link
                                                 to="/Calling"
-                                                className="btn bg-gradient-to-br from-sky-900 via-sky-600 to-sky-700 hover:bg-gradient-to-r"
+                                                className="btn text-white bg-black  rounded-lg text-sm mx-2  text-center"
                                             >
-                                                More
+                                                Enroll
                                             </Link>
                                         </Col>
                                     </Row>

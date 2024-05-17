@@ -7,8 +7,9 @@ import { MdAssignment } from "react-icons/md";
 import { AiFillHome } from "react-icons/ai";
 import PropTypes from 'prop-types';
 import { RiFilePpt2Fill } from "react-icons/ri";
+import { MdQuiz } from "react-icons/md";
 
-const Sidebar = ({ sidebarToggle, setclicked, setdetail, setvideo, setassignment ,setppt}) => {
+const Sidebar = ({ sidebarToggle, setclicked, setdetail, setvideo, setquiz, setassignment ,setppt}) => {
   const [activeOption, setActiveOption] = useState(null);
 
   const handleOptionClick = (option) => {
@@ -19,6 +20,7 @@ const Sidebar = ({ sidebarToggle, setclicked, setdetail, setvideo, setassignment
       setclicked(false);
       setassignment(false);
       setppt(false);
+  
     } else if (option === "pdf") {
       setclicked(true);
       setdetail(false);
@@ -40,6 +42,14 @@ const Sidebar = ({ sidebarToggle, setclicked, setdetail, setvideo, setassignment
     }
    else if (option === "assignment") {
     setassignment(true);
+    setvideo(false);
+    setclicked(false);
+    setdetail(false);
+    setppt(false);
+  }
+  else if (option === "quiz") {
+    setquiz(true);
+    setassignment(false);
     setvideo(false);
     setclicked(false);
     setdetail(false);
@@ -110,6 +120,16 @@ const Sidebar = ({ sidebarToggle, setclicked, setdetail, setvideo, setassignment
             Assignment
           </li>
         </Link>
+        <Link>
+          <li
+            className={`mb-2 rounded hover:shadow hover:bg-sky-500 py-2 px-2 ${activeOption === "quiz" ? 'bg-sky-800' : ''}`}
+            onClick={() => handleOptionClick("quiz")}
+          >
+             <MdQuiz className='inline-block w-6 h-6 mr-2 -mt-2'></MdQuiz>
+             
+            Quiz
+          </li>
+        </Link>
         
       </ul>
     </div>
@@ -123,6 +143,7 @@ Sidebar.propTypes = {
   setvideo: PropTypes.func.isRequired,
   setassignment: PropTypes.func.isRequired,
   setppt: PropTypes.func.isRequired,
+  setquiz: PropTypes.func.isRequired,
 };
 
 export default Sidebar;

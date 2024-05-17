@@ -7,6 +7,8 @@ import Calling from './SideBarAndNavBar/Calling';
 import ForgotPassword from './Pages/ForgotPassword';
 import ResetPassword from './Pages/ResetPassword';
 import RegistrationPage from "./Pages/Registerationpage";
+import ContactUs from "./Pages/ContactUs";
+import Feedback from "./Pages/Feedback";
 
 
 
@@ -23,6 +25,8 @@ export default function App() {
           <Route path='/calling' element={<Calling/>} />
           <Route path='/forgot' element={<ForgotPassword />} />
           <Route path='/resetpassword' element={<ResetPassword />} />
+          <Route path='/ContactUs' element={<ContactUs />} />
+          <Route path='/feedback' element={<Feedback/>} />
         </Routes>
       </BrowserRouter>
     </div>

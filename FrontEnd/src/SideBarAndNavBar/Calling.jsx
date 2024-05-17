@@ -10,6 +10,7 @@ export default function Calling() {
   const [video, setvideo] = useState(false);
   const [assignment, setassignment] = useState(false);
   const [ppt, setppt] = useState(false);
+  const [ quiz, setquiz] = useState(false);
   const styles = {
     backgroundImage: `url(${bg})`, // Use `url()` to specify the path to the image
     backgroundSize: '964px', // Adjust the background size
@@ -45,7 +46,10 @@ export default function Calling() {
             assignment={assignment}
             setassignment={setassignment} 
             ppt={ppt}
-            setppt={setppt}/>
+            setppt={setppt}
+            quiz={quiz}
+            setquiz={setquiz}
+            />
 
           <OpenSiderBar
             sidebarToggle={sidebarToggle} setsidebarToggle={setsidebarToggle}
@@ -58,6 +62,8 @@ export default function Calling() {
             setassignment={setassignment}
             ppt={ppt}
             setppt={setppt}
+            quiz={quiz}
+            setquiz={setquiz}
           />
 
         </div>
