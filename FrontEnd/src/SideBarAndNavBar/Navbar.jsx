@@ -5,7 +5,9 @@ import { Col, Row } from 'react-bootstrap';
 import { CgProfile } from "react-icons/cg";
 import PropTypes from 'prop-types';
 import { FaUserCircle } from "react-icons/fa";
-import { FiSettings, FiLogOut } from "react-icons/fi";
+import { VscFeedback } from "react-icons/vsc";
+import { FiLogOut } from 'react-icons/fi';
+import { MdPhoneCallback } from "react-icons/md";
 import { FaBars } from 'react-icons/fa6';
 import Ppt from '../SideBarOptions/Ppt';
 import CourseVideos from '../SideBarOptions/CourseVideos';
@@ -52,9 +54,7 @@ const Navbar = ({ sidebarToggle, setsidebarToggle, clicked, detail, assignment, 
                 </div>
                 <div style={{marginLeft:"125vh"}}>
                     <div className='relative'>
-                        <button className='text-white group'>
-                        <BsBellFill className='w-6 h-6 mt-1' ></BsBellFill>
-                        </button>
+                        
                         </div>
                 </div>
                 <div className='flex items-center gap-x-5'>
@@ -65,12 +65,12 @@ const Navbar = ({ sidebarToggle, setsidebarToggle, clicked, detail, assignment, 
                                 <ul className='py-2 text-sm text-gray-950'>
                                     <li className='mb-2 rounded hover:shadow hover:bg-gray-200 py-1 px-2' style={{ margin: "10px" }}>
                                         <span onClick={() => {
-                                            navigate("feedback/");
+                                            navigate("/feedback");
 
                                         }}>
                                             <Row>
                                                 
-                                                <Col xs={4} style={{ marginTop: "3.5px", paddingleft: "30px" }}><CgProfile /></Col>
+                                                <Col xs={4} style={{ marginTop: "3.5px", paddingleft: "30px" }}><VscFeedback /></Col>
                                                 <Col xs={8} style={{ padding: "0", paddingRight: "75px" }}>Feedback</Col>
                                             </Row>
                                         </span>
@@ -81,7 +81,7 @@ const Navbar = ({ sidebarToggle, setsidebarToggle, clicked, detail, assignment, 
 
                                         }}>
                                             <Row>
-                                                <Col xs={4} style={{ marginTop: "3.5px", paddingleft: "30px" }}><FiSettings /></Col>
+                                                <Col xs={4} style={{ marginTop: "3.5px", paddingleft: "30px" }}><MdPhoneCallback/></Col>
                                                 <Col xs={8} style={{ padding: "0", paddingRight: "75px" }}>ContactUs</Col>
                                             </Row>
                                         </span>

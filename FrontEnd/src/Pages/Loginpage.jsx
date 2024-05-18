@@ -3,6 +3,61 @@ import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
 export default function LoginPage() {
+  // const [pass, setpass] = useState("password");
+
+  // const [iconColor, seticonColor] = useState("currentColor");
+
+  // const handlleClick = () => {
+  //   seticonColor(iconColor === "currentColor" ? "Darkblue" : "currentColor");
+  //   setpass(pass === "password" ? "text" : "password");
+  // };
+
+  // const [buttonStatus, setbuttonStatus] = useState(false);
+  
+  // const navigate = useNavigate();
+
+  // const [formData, setformdata] = useState({
+  //   email: "",
+  //   password: "",
+  // });
+
+  // const [error, seterror] = useState({ password: "", email: "" });
+  // const validationSchema = Yup.object({
+  //   email: Yup.string()
+
+  //     .matches(
+  //       /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+  //       "Invaild email format"
+  //     )
+  //     .required("Please enter email"),
+
+  //   password: Yup.string()
+  //   .required("Please enter password"),
+  // });
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     await validationSchema.validate(formData, { abortEarly: false });
+  //     seterror({ email: "", password: "" });
+  //     setbuttonStatus(true);
+  //   } catch (errors) {
+  //     const newerror = {};
+
+  //     errors.inner.forEach((err) => {
+  //       newerror[err.path] = err.message;
+  //     });
+  //     seterror(newerror);
+  //   }
+  // };
+
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+
+  //   setformdata({ ...formData, [name]: value });
+  // };
+
 
   const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -19,11 +74,11 @@ export default function LoginPage() {
           res.json().then((data) => {
             console.log(data);
             if (email === "" && password === "") {
-              navigate("/login");
+              navigate("/Login");
             } else if (data)
              
             {
-              navigate("/dash");
+              navigate("/Dash");
             }
           })
         );

@@ -168,7 +168,7 @@ export default function Dashboard() {
                                 <FaUserCircle className="w-6 h-6 mt-1" />
                                 <div className="z-10 hidden absolute bg-white rounded-lg shadow w-32 group-focus:block top-full right-0">
                                     <ul className="py-2 text-sm text-gray-950">
-                                        <li className="m-2 rounded hover:shadow hover:bg-gray-200 py-1 ">
+                                        <li className='m-2 rounded hover:shadow hover:bg-gray-200 py-1 px-2' style={{ margin: "10px" }}>
                                             <span onClick={() => navigate('/feedback')}>
                                                 <Row>
                                                     <Col xs={4} style={{ marginTop: '3.5px' }}><VscFeedback/></Col>
@@ -176,7 +176,7 @@ export default function Dashboard() {
                                                 </Row>
                                             </span>
                                         </li>
-                                        <li className="m-2 rounded hover:shadow hover:bg-gray-200 py-1" >
+                                        <li className='m-2 rounded hover:shadow hover:bg-gray-200 py-1 px-2' style={{ margin: "10px" }}>
                                             <span onClick={() => navigate('/ContactUs')}>
                                                 <Row>
                                                     <Col xs={4} style={{ marginTop: '3.5px' }}><MdPhoneCallback /></Col>
@@ -184,7 +184,7 @@ export default function Dashboard() {
                                                 </Row>
                                             </span>
                                         </li>
-                                        <li className="m-2 rounded hover:shadow hover:bg-gray-200 py-1 " >
+                                        <li className='m-2 rounded hover:shadow hover:bg-gray-200 py-1 px-2' style={{ margin: "10px" }}>
                                             <span onClick={() => navigate('/login')}>
                                                 <Row>
                                                     <Col xs={4} style={{ marginTop: '3.5px' }}><FiLogOut /></Col>
@@ -202,8 +202,8 @@ export default function Dashboard() {
 
             {/* Explore Our Courses section */}
             <div className="mt-2 ml-4"data-aos="zoom-in-up">
-                <center className="center font-serif text-4xl text-dark text-bold mt-4">Explore Our Courses</center>
-                <h3 className="font-serif text-3xl mb-2">Free Courses</h3>
+      
+                <h3 className="font-serif text-3xl mb-2">Explore our Courses</h3>
                 <hr />
                 <Row className='mt-2'>
                     <Col xs={4} className="mr-4">
@@ -247,7 +247,7 @@ export default function Dashboard() {
 
             {/* Active Courses section */}
             <div className="mt-4 ml-4"data-aos="zoom-in-down">
-                <h3 className="font-serif text-3xl mb-2">Paid Courses</h3>
+                <h3 className="font-serif text-3xl mb-2">Active Courses</h3>
                 <hr />
                 <Row className="px-4 mb-4  ">
                     {filteredCourses.map((course, index) => (
@@ -280,7 +280,7 @@ export default function Dashboard() {
                                                 to="/Calling"
                                                 className="btn text-white bg-black  rounded-lg text-sm mx-2  text-center"
                                             >
-                                                Enroll
+                                                Explore
                                             </Link>
                                         </Col>
                                     </Row>
