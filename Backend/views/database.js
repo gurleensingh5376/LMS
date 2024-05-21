@@ -5,4 +5,4 @@ const connectDB = async () => {
     console.log(`Mongodb is connected with ${connection.host}`);
 };
 
-module.exports = { connectDB };
+module.exports = {connectDB};

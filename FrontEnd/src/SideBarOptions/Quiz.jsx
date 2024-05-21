@@ -23,9 +23,9 @@ const questions = [
 export default function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState({});
-  const [score, setScore] = useState(0);
   const [isOptionSelected, setIsOptionSelected] = useState(false);
   const [buttonClicked, setButtonClicked] = useState(false);
+  const [score, setScore] = useState(0)
 
   const handleOptionSelect = (option) => {
     setSelectedOptions((prevOptions) => ({ ...prevOptions, [currentQuestion]: option }));
@@ -55,7 +55,6 @@ export default function Quiz() {
   const handleClick = () => {
     if (!buttonClicked1) {
       setButtonClicked1(true);
-      console.log(progressbar)
     }
   };
 
@@ -65,6 +64,8 @@ export default function Quiz() {
       {currentQuestion < questions.length && (
         <div className={`card ${style.mcq}`}>
           <div className='card-body'>
+            <div className='flex justify-center flex-col m-0'>
+
             <p className={style.p}>{questions[currentQuestion].question}</p>
             {questions[currentQuestion].options.map((option, index) => (
               <div key={index} className={style.button}>
@@ -72,7 +73,7 @@ export default function Quiz() {
                   type='submit'
                   size='lg'
                   style={{
-                    backgroundColor: selectedOptions[currentQuestion] === option ? '#6f42c1' : 'white',
+                    backgroundColor: selectedOptions[currentQuestion] === option ? '#0ea5e9' : 'white',
                     borderColor: 'black',
                     width: '70vh',
                   }}
@@ -87,25 +88,19 @@ export default function Quiz() {
               <button
                 type='submit'
                 size='lg'
-                style={{
-                  backgroundColor: '#581c87',
-                  color: 'black',
-                  borderColor: 'white',
-                  width: '12vh',
-                  transition: 'background-color 0.3s, border-color 0.3s',
-                }}
-                onClick={handleSubmit}
+                            onClick={handleSubmit}
                 disabled={!isOptionSelected}
-                className='btn'
+                className='btn bg-black text-white mt-3'
               >
                 Submit
               </button>
             </div>
           </div>
         </div>
+        </div>
       )}
       {currentQuestion >= questions.length && (
-        <div>
+        <div className='h-full mt-40 font-bold gap-3 text-3xl flex justify-center items-center flex-col'>
           <h2>Quiz Complete!</h2>
           <p>You scored {score} out of {questions.length}.</p>
           {buttonClicked && (

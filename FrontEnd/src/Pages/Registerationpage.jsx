@@ -104,7 +104,6 @@ const handleSubmit = async (e) => {
     
 
 
-}
 const navigate = useNavigate();
 
   return (
@@ -149,7 +148,7 @@ const navigate = useNavigate();
                 </label>
 
                 <input
-                  type={pass}
+                  type="password"
                   name="password"
                   className="flex h-10 w-full rounded-md border border-sky-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-sky-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                   id="floatingPassword"
@@ -169,7 +168,7 @@ const navigate = useNavigate();
                   Confirm Password
                 </label>
                 <input
-                  type={pass}
+                  type="password"
                   className="flex h-10 w-full rounded-md border border-sky-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-sky-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                   id="floatingInput"
                   name="confirmpassword"
@@ -216,3 +215,4 @@ const navigate = useNavigate();
     </>
   );
 
+}

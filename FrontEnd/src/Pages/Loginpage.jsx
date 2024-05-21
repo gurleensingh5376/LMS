@@ -13,7 +13,7 @@ export default function LoginPage() {
   // };
 
   // const [buttonStatus, setbuttonStatus] = useState(false);
-  
+
   // const navigate = useNavigate();
 
   // const [formData, setformdata] = useState({
@@ -58,95 +58,82 @@ export default function LoginPage() {
   //   setformdata({ ...formData, [name]: value });
   // };
 
-
   const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    
+  const [password, setPassword] = useState("");
 
-    const formSubmission = () => {
-        fetch("http://localhost:4000/login", {
-          method: "post",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email,password }),
-        }).then((res) => 
-          res.json().then((data) => {
-            console.log(data);
-            if (email === "" && password === "") {
-              navigate("/Login");
-            } else if (data)
-             
-            {
-              navigate("/Dash");
-            }
-          })
-        );
-        console.log("Email is " + email);
-        console.log("Password is " + password);
-      };
+  const formSubmission = () => {
+    fetch("http://localhost:4000/login", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    }).then((res) =>
+      res.json().then((data) => {
+        console.log(data)
+        if (email === "" && password === "") {
+          navigate("/Login");
+        } else if (data.success == false) {
+          navigate("/Login");
+        } else {
+          navigate("/Dash");
+        }
+      })
+    );
+    console.log("Email is " + email);
+    console.log("Password is " + password);
+  };
   const [buttonStatus, setButtonStatus] = useState(false);
-  
+
   const navigate = useNavigate();
 
-
   const [formData, setformdata] = useState({
-      email: "",
-      password: "",
-  })
-
-  const [error, seterror] = useState({ password: '', email: '' });
-  const validationSchema = Yup.object({
-      email: Yup.string()
-
-          .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, "Invaild email format")
-          .required("Please enter email"),
-
-      password: Yup.string()
-
-          
-          .required("Please enter password")
-
+    email: "",
+    password: "",
   });
 
+  const [error, seterror] = useState({ password: "", email: "" });
+  const validationSchema = Yup.object({
+    email: Yup.string()
+
+      .matches(
+        /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+        "Invaild email format"
+      )
+      .required("Please enter email"),
+
+    password: Yup.string()
+    .required("Please enter password"),
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     formSubmission();
 
     try {
-        await validationSchema.validate(formData, { abortEarly: false })
-        seterror({ email: '', password: '' });
-        // setbuttonStatus(true)
-
+      await validationSchema.validate(formData, { abortEarly: false });
+      seterror({ email: "", password: "" });
+      // setbuttonStatus(true)
     } catch (errors) {
+      const newerror = {};
 
-
-        const newerror = {}
-
-        errors.inner.forEach((err) => {
-            newerror[err.path] = err.message;
-        });
-        seterror(newerror);
-
+      errors.inner.forEach((err) => {
+        newerror[err.path] = err.message;
+      });
+      seterror(newerror);
     }
-};
-const handleChange1 = (e) => {
-  const { name, value } = e.target;
-  setEmail(e.target.value);
-  setformdata({ ...formData, [name]: value });
+  };
+  const handleChange1 = (e) => {
+    const { name, value } = e.target;
+    setEmail(e.target.value);
+    setformdata({ ...formData, [name]: value });
+  };
 
-
-};
-
-const handleChange2 = (e) => {
-  const { name, value } = e.target;
-  setPassword(e.target.value);
-  setformdata({ ...formData, [name]: value });
-
-
-};
-
+  const handleChange2 = (e) => {
+    const { name, value } = e.target;
+    setPassword(e.target.value);
+    setformdata({ ...formData, [name]: value });
+  };
 
   return (
     <div className="flex flex-col h-screen  mt-14">
@@ -168,7 +155,7 @@ const handleChange2 = (e) => {
                 className="flex h-10 w-full rounded-md border border-sky-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-sky-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                 id="floatingInput"
                 value={formData.email}
-                 onChange={handleChange1}
+                onChange={handleChange1}
                 placeholder="Enter Email"
                 required
               />
@@ -191,8 +178,9 @@ const handleChange2 = (e) => {
                 name="password"
                 className="flex h-10 w-full rounded-md border border-sky-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-sky-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                 id="floatingPassword"
+                type="password"
                 value={formData.password}
-                 onChange={handleChange2} 
+                onChange={handleChange2}
                 placeholder="Enter Password"
                 required
               />
@@ -229,10 +217,7 @@ const handleChange2 = (e) => {
             <button
               type="submit"
               onClick={() => {
-                if (buttonStatus == true)
-                  
-                    navigate("/Dash");
-                  
+                if (buttonStatus == true) navigate("/Dash");
               }}
               size="lg"
               className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 mt-3 font-semibold leading-7 text-white hover:bg-black/80 shadow-xl"

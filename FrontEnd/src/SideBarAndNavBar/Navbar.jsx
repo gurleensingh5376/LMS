@@ -15,30 +15,35 @@ import Pdf from '../SideBarOptions/Pdf';
 import { Container } from 'react-bootstrap';
 import CourseDetails from '../SideBarOptions/CourseDetails';
 import Assignment from '../SideBarOptions/Assignment';
+import Quiz from "../SideBarOptions/Quiz";
 
 
-const Navbar = ({ sidebarToggle, setsidebarToggle, clicked, detail, assignment, video, ppt }) => {
-    let content;
+const Navbar = ({ sidebarToggle, setsidebarToggle, clicked, detail, assignment, video, ppt ,quiz, content}) => {
+    let _content;
     if (clicked) {
-        content = (
+        _content = (
             <Container style={{ backgroundColor: 'white', marginTop: '20px', marginBottom: '20px' }}>
-                <Pdf />
+                <Pdf content={content}/>
             </Container>
         );
     } else if (detail) {
-        content = <CourseDetails />;
+        _content = <CourseDetails content={content}/>;
     } else if (video) {
-        content = <CourseVideos />
+        _content = <CourseVideos />
     } else if (assignment) {
-        content = <Assignment />
+        _content = <Assignment />
         
     }
     else if (ppt) {
-        content = <Ppt />
+        _content = <Ppt />
+        
+    }
+    else if (quiz) {
+        _content = <Quiz />
         
     }
     else {
-        content = <CourseDetails />
+        _content = <CourseDetails />
     }
     
     const navigate = useNavigate();
@@ -109,7 +114,7 @@ const Navbar = ({ sidebarToggle, setsidebarToggle, clicked, detail, assignment, 
                     <Pdf />
                 </Container>
                 :
-                content
+                _content
             }
         </>
     );

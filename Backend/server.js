@@ -5,6 +5,8 @@ const app = express()
 const bcrypt = require("bcryptjs");
 const { connectDB } = require('./views/database.js');
 
+require('dotenv').config()
+
 
 connectDB();
 
@@ -29,20 +31,27 @@ app.use(
 
 app.use(bodyParser.json());
 
-const courseSchema = new mongoose.Schema({
+const contentSchema = new mongoose.Schema({
   title: String,
   videoLink: String,
   pdfLink: String,
   pptLink: String,
 });
 
-const Course = mongoose.model("Course", courseSchema);
 
 const authSchema = new mongoose.Schema({
   email: String,
   password: String
 });
 
+const courseSchema = new mongoose.Schema({
+  title: String,
+  subtitle: String,
+  img: String
+})
+
+const Course = mongoose.model("Course", courseSchema);
+const Content = mongoose.model("Content", contentSchema);
 const Auth = mongoose.model("Auth", authSchema);
 
 
@@ -89,12 +98,12 @@ app.post('/login', async (req, res) => {
     if (user) {
       const isValid = await bcrypt.compare(password, user.password);
       if (isValid) {
-        res.json({ message: 'Login successful' });
+        res.json({ message: 'Login successful', success:true });
       } else {
-        res.status(401).json({ message: 'Invalid password' });
+        res.status(401).json({ message: 'Invalid password', success:false });
       }
     } else {
-      res.status(401).json({ message: 'User not found' });
+      res.status(401).json({ message: 'User not found', success:false });
     }
   } catch (error) {
     console.error('Error logging in user:', error);
@@ -104,6 +113,20 @@ app.post('/login', async (req, res) => {
 
 app.get('/dash', (req, res) => {
   res.json()
+})
+
+app.get('/courses', async (req, res) => {
+
+  const courses = await Course.find();
+  res.json(courses)
+
+})
+
+app.get('/contents', async (req, res) => {
+
+  const contents = await Content.find();
+  res.json(contents)
+
 })
 
 app.listen(process.env.PORT, () => {
